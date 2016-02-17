@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">NavigationBar</string>
+
+    !-- tab navigation item -->
+    <string name="homepage_content">首页</string>
+    <string name="commodity_content">商品管理</string>
+    <string name="message_content">消息</string>
+    <string name="order_content">订单管理</string>
+</resources>

@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.taobao.scaffold.activity.MainActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/container">
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/ss_tabline"
+        android:background="#0D000000"/>
+
+    <com.koudle.navigationbar.NavigationBarView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#FEFFFFFF"
+        android:id="@+id/navigationBarView">
+
+    </com.koudle.navigationbar.NavigationBarView>
+
+</LinearLayout>

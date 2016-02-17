@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="navitem_content_default_color">#3d3d3d</color>
+
+    <color name="navitem_content_pressed_color">#FF6600</color>
+
+    <color name="tabnavigation_background">#FEFFFFFF</color>
+    <color name="tabnavigation_pressed_background">#00000000</color>
+
+    <color name="ss_guideview_background">#50000000</color>
+
+    <color name="F_G">#FF5000</color>
+
+</resources>
