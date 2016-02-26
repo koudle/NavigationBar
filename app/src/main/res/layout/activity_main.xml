@@ -18,12 +18,12 @@
         android:id="@+id/ss_tabline"
         android:background="#0D000000"/>
 
-    <com.koudle.navigationbar.NavigationBarView
+    <com.koudle.navigationbarexample.MyTabBarView
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="#FEFFFFFF"
         android:id="@+id/navigationBarView">
 
-    </com.koudle.navigationbar.NavigationBarView>
+    </com.koudle.navigationbarexample.MyTabBarView>
 
 </LinearLayout>

@@ -2,25 +2,30 @@ package com.koudle.navigationbarexample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.koudle.navigationbar.NavigationBarView;
-import com.koudle.navigationbar.NavigationItem;
-import com.koudle.navigationbar.SampleFragment;
+import com.koudle.navigationbar.TabBarView;
+import com.koudle.navigationbar.TabItemClickEvent;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private final static String TAG = "MainActivity";
-    private NavigationBarView mNavigationBarView;
+    private MyTabBarView tabBarView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        init();
+
+        tabBarView = (MyTabBarView) findViewById(R.id.navigationBarView);
+
+        EventBus.getDefault().register(this);
     }
 
 
@@ -47,35 +52,11 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void init(){
-
-        Log.d(TAG, "init");
-
-        NavigationItem homepageItem = new NavigationItem(0,true, com.koudle.navigationbar.R.string.homepage_content, com.koudle.navigationbar.R.color.navitem_content_default_color, com.koudle.navigationbar.R.color.navitem_content_pressed_color,
-                com.koudle.navigationbar.R.drawable.ss_xp_icon_home_normal, com.koudle.navigationbar.R.drawable.ss_xp_icon_home_press,
-                SampleFragment.TAG,SampleFragment.class);
-
-        NavigationItem commodityItem = new NavigationItem(1,false, com.koudle.navigationbar.R.string.commodity_content, com.koudle.navigationbar.R.color.navitem_content_default_color, com.koudle.navigationbar.R.color.navitem_content_pressed_color,
-                        com.koudle.navigationbar.R.drawable.ss_xp_icon_goods_normal, com.koudle.navigationbar.R.drawable.ss_xp_icon_goods_press,
-                        SampleFragment.TAG,SampleFragment.class);
-
-        NavigationItem orderItem = new NavigationItem(2,false, com.koudle.navigationbar.R.string.order_content, com.koudle.navigationbar.R.color.navitem_content_default_color, com.koudle.navigationbar.R.color.navitem_content_pressed_color,
-                        com.koudle.navigationbar.R.drawable.ss_xp_icon_orders_normal, com.koudle.navigationbar.R.drawable.ss_xp_icon_orders_press,
-                        SampleFragment.TAG,SampleFragment.class);
-
-        NavigationItem messageItem = new NavigationItem(3,false, com.koudle.navigationbar.R.string.message_content, com.koudle.navigationbar.R.color.navitem_content_default_color, com.koudle.navigationbar.R.color.navitem_content_pressed_color,
-                        com.koudle.navigationbar.R.drawable.ss_xp_icon_messages_normal, com.koudle.navigationbar.R.drawable.ss_xp_icon_messages_press,
-                        SampleFragment.TAG,SampleFragment.class);
-
-        NavigationItem.addItem(homepageItem);
-        NavigationItem.addItem(commodityItem);
-        NavigationItem.addItem(orderItem);
-        NavigationItem.addItem(messageItem);
-
-        mNavigationBarView = (NavigationBarView) findViewById(R.id.navigationBarView);
-        mNavigationBarView.init(MainActivity.this,R.id.container);
-
-
+    @Subscribe(
+            threadMode = ThreadMode.MAIN
+    )
+    public void onItemClick(TabItemClickEvent event){
+        
     }
 
 }
