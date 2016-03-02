@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             threadMode = ThreadMode.MAIN
     )
     public void onItemClick(TabItemClickEvent event){
-        
+
     }
 
 }

@@ -55,4 +55,9 @@ public class MyTabBarView extends TabBarView {
     public TabItemView getTabItemView() {
         return new MyTabItemView(getContext());
     }
+
+    @Override
+    public void onItemClick(int lastIndex, int curIndex) {
+
+    }
 }

@@ -42,7 +42,7 @@ public abstract class TabItemView extends LinearLayout{
      */
     private void initView(){
         this.setOrientation(LinearLayout.VERTICAL);
-        this.setLayoutParams(new LinearLayout.LayoutParams(
+        this.setLayoutParams(new LayoutParams(
                 LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 1));
         this.setGravity(Gravity.CENTER_HORIZONTAL);
 
@@ -69,7 +69,7 @@ public abstract class TabItemView extends LinearLayout{
     public abstract void findView();
 
     public void click(){
-        EventBus.getDefault().post(new TabItemClickEvent(mItem.which));
+        EventBus.getDefault().post(new TabItemClickEvent(mItem.which,this.getClass().getSimpleName()));
     }
 
     public abstract int getTabItemLayoutResource();

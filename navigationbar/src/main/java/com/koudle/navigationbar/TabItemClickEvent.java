@@ -6,8 +6,10 @@ package com.koudle.navigationbar;
 public class TabItemClickEvent {
 
     public int curIndex;
+    public String className;
 
-    public TabItemClickEvent(int curIndex){
+    public TabItemClickEvent(int curIndex,String name){
         this.curIndex = curIndex;
+        this.className = name;
     }
 }

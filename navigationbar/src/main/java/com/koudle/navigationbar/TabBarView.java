@@ -16,6 +16,7 @@ import java.util.List;
 public abstract class TabBarView extends LinearLayout {
 
     public int mCurTabIndex = -1;
+    public int mLastTabIndex = -1;
     private List<TabItemView> tabItemViews = new ArrayList<>();
 
     public TabBarView(Context context) {
@@ -44,8 +45,8 @@ public abstract class TabBarView extends LinearLayout {
 
         //生成导航栏的每个item
         for(TabItem item: tabItems){
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT,1);
+            LayoutParams layoutParams = new LayoutParams(
+                    LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT,1);
 
             TabItemView view = getTabItemView();
             view.init(item);
@@ -56,8 +57,6 @@ public abstract class TabBarView extends LinearLayout {
                 view.click();
             }
         }
-
-
     }
 
     public abstract ArrayList<TabItem> getTabItemList();
@@ -69,12 +68,20 @@ public abstract class TabBarView extends LinearLayout {
         threadMode = ThreadMode.MAIN
     )
     public void onItemClick(TabItemClickEvent event){
-        if(mCurTabIndex != event.curIndex){
+
+        if(tabItemViews.size()<=0) return;
+
+        if(mCurTabIndex != event.curIndex && tabItemViews.get(0).getClass().getSimpleName().equals(event.className)){
             if(mCurTabIndex >= 0) {
                 tabItemViews.get(mCurTabIndex).setNormalState();
             }
             tabItemViews.get(event.curIndex).setPressedState();
+            mLastTabIndex = mCurTabIndex;
             mCurTabIndex = event.curIndex;
+
+            onItemClick(mLastTabIndex,mCurTabIndex);
         }
     }
+
+    public abstract void onItemClick(int lastIndex,int curIndex);
 }
